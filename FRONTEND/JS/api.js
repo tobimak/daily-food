@@ -1,6 +1,6 @@
 const API_URL = (location.hostname === "localhost" || location.hostname === "127.0.0.1")
-  ? "http://localhost:5156"                            // desarrollo en tu PC
-  : "https://daily-food-ouhl.onrender.com";            // producción (Render)
+  ? "http://localhost:5156"
+  : "https://daily-food-ouhl.onrender.com";
 
 const api = {
     token: localStorage.getItem("token"),
