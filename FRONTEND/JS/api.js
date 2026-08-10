@@ -1,5 +1,6 @@
-// api.js
-const API_URL = "http://localhost:5156"; // ⚠️ puerto http de tu API (míralo en la consola al arrancar)
+const API_URL = (location.hostname === "localhost" || location.hostname === "127.0.0.1")
+  ? "http://localhost:5156"                            // desarrollo en tu PC
+  : "https://daily-food-ouhl.onrender.com";            // producción (Render)
 
 const api = {
     token: localStorage.getItem("token"),
