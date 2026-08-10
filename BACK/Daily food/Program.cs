@@ -87,7 +87,13 @@ app.UseCors("AllowFrontend");
 //app.UseHttpsRedirection();
 app.UseAuthentication();        // autentica antes de autorizar
 app.UseAuthorization();
-//app.UseMiddleware<ExceptionMiddleware>();  // nuestras excepciones → códigos HTTP
+app.UseMiddleware<ExceptionMiddleware>();  // nuestras excepciones → códigos HTTP
+
+using (var scope = app.Services.CreateScope())
+{
+    var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+    db.Database.Migrate();
+}
 
 app.MapControllers();
 
