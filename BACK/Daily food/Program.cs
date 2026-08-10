@@ -66,28 +66,30 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowFrontend", policy =>
     {
-        policy.WithOrigins(builder.Configuration.GetSection("Cors:Origins").Get<string[]>() ?? [])
+        // ✅ Cambiado: acepta cualquier origen en desarrollo Y producción
+        policy.SetIsOriginAllowed(_ => true)
               .AllowAnyHeader()
-              .AllowAnyMethod();
+              .AllowAnyMethod()
+              .AllowCredentials(); // opcional, por si usas cookies en el futuro
     });
 });
 
 var app = builder.Build();
 
-app.UseDeveloperExceptionPage();
-
-// Pipeline
+// ✅ Solo en desarrollo: página de errores detallada
 if (app.Environment.IsDevelopment())
 {
+    app.UseDeveloperExceptionPage();
     app.UseSwagger();
     app.UseSwaggerUI();
 }
 
+// Pipeline
 app.UseCors("AllowFrontend");
 //app.UseHttpsRedirection();
-app.UseAuthentication();        // autentica antes de autorizar
+app.UseAuthentication();
 app.UseAuthorization();
-app.UseMiddleware<ExceptionMiddleware>();  // nuestras excepciones → códigos HTTP
+app.UseMiddleware<ExceptionMiddleware>();
 
 using (var scope = app.Services.CreateScope())
 {
