@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="Aplicacion/Aplicacion.csproj" Id="b2809993-aa71-4a2b-91d7-a3dfe1390682" />
+  <Project Path="Daily food/Daily food.csproj" />
+  <Project Path="Dominio/Dominio.csproj" Id="eb10a9e8-3f52-4ef6-b883-635f0c9aa03f" />
+  <Project Path="Infraestructura/Infraestructura.csproj" Id="b40bc226-a247-478a-aaab-8622aeae9354" />
+</Solution>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MenuChef · Perfil</title>
+    <link rel="stylesheet" href="../CSS/perfil.css" />
+</head>
+<body>
+
+    <header class="topbar">
+        <a class="logo" href="menu.html">Daily Food</a>
+<nav>
+  <a href="menu.html" class="active">Calendario</a>
+  <a href="comida.html">Comidas</a>
+  <a href="perfil.html">Perfil</a>
+</nav>
+    </header>
+
+    <main class="wrap">
+
+        <!-- Tarjeta de perfil -->
+        <section class="card">
+            <div class="perfil-head">
+                <div class="avatar-wrap">
+                    <div class="avatar" id="avatar">AG</div>
+                    <label class="mini-btn" for="f-foto">Cambiar foto</label>
+                    <input type="file" id="f-foto" accept="image/*" hidden />
+                </div>
+                <div class="perfil-id">
+                    <h1 id="p-nombre">nombre de perfil</h1>
+                    <p id="p-email">chef@restaurant.com</p>
+                    <div class="chips">
+                        <span class="chip-info" id="p-cocina">cocina</span>
+                        <span class="chip-info" id="p-alta">🗓️ Miembro desde enero 2026</span>
+                    </div>
+                </div>
+            </div>
+
+            <form id="form-datos" class="datos">
+                <h2>Datos de la cuenta</h2>
+                <div class="grid-2">
+                    <label class="campo">
+                        Nombre completo
+                        <input id="f-nombre" type="text" required />
+                    </label>
+                    <label class="campo">
+                        Cocina o restaurante
+                        <input id="f-cocina" type="text" placeholder="Opcional" />
+                    </label>
+                </div>
+                <label class="campo">
+                    Correo electrónico
+                    <input id="f-email" type="email" required />
+                </label>
+
+                <h2 class="seg">Cambiar contraseña</h2>
+                <div class="grid-2">
+                    <label class="campo">
+                        Nueva contraseña
+                        <input id="f-pass" type="password" minlength="8" placeholder="Vacío = no cambiar" />
+                    </label>
+                    <label class="campo">
+                        Repetir contraseña
+                        <input id="f-pass2" type="password" minlength="8" placeholder="Repítela" />
+                    </label>
+                </div>
+
+                <div class="acciones">
+                    <button type="submit" class="btn">Guardar cambios</button>
+                </div>
+            </form>
+        </section>
+
+        <!-- Zona de peligro -->
+        <section class="card danger-card">
+            <h2>Zona de peligro</h2>
+            <p>Estas acciones no se pueden deshacer una vez confirmadas en el servidor.</p>
+            <div class="acciones">
+                <button class="btn ghost" id="btn-logout">Cerrar sesión</button>
+                <button class="btn danger" id="btn-delete">Eliminar cuenta</button>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Modal cerrar sesión -->
+    <div class="modal" id="modal-logout">
+        <div class="modal-card">
+            <h3>¿Cerrar sesión?</h3>
+            <p>Tendrás que volver a iniciar sesión para acceder a tus menús.</p>
+            <div class="acciones">
+                <button class="btn ghost" data-cerrar>Cancelar</button>
+                <button class="btn" id="confirm-logout">Cerrar sesión</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal eliminar cuenta -->
+    <div class="modal" id="modal-delete">
+        <div class="modal-card">
+            <h3>Eliminar cuenta ⚠️</h3>
+            <p>Se borrarán tus menús, recetas y notas. Escribe <strong>ELIMINAR</strong> para confirmar.</p>
+            <input class="input-confirm" id="f-confirm" type="text" placeholder="ELIMINAR" autocomplete="off" />
+            <div class="acciones">
+                <button class="btn ghost" data-cerrar>Cancelar</button>
+                <button class="btn danger" id="confirm-delete" disabled>Eliminar definitivamente</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="toast" id="toast"></div>
+
+  <script src="../JS/api.js"></script>
+  <script src="../JS/perfil.js"></script>
+</body>
+</html>

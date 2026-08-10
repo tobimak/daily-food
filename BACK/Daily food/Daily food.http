@@ -1,0 +1,6 @@
+@Daily_food_HostAddress = http://localhost:5290
+
+GET {{Daily_food_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

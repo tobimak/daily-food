@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MenuChef · Organiza tus menús de cocina</title>
+    <!-- ➕ ruta relativa (funciona con Live Server y con doble clic) -->
+    <link rel="stylesheet" href="../CSS/index.css" />
+</head>
+<body>
+
+    <main class="auth">
+        <!-- Radios que controlan login/registro (CSS puro) -->
+        <input type="radio" name="tab" id="tab-login" checked />
+        <input type="radio" name="tab" id="tab-register" />
+
+        <!-- Panel izquierdo con diagonal -->
+        <aside class="brand">
+            <div class="logo">Daily Food</div>
+
+            <h1 class="t t-login">¡Hola de<br />nuevo!</h1>
+            <h1 class="t t-register">Únete a<br />Daily Food</h1>
+
+            <p class="t t-login">Organiza los menús de tu cocina: recetas, despensa y planificación semanal en un solo lugar.</p>
+            <p class="t t-register">Crea tu cuenta gratis y empieza a planificar los menús de tu cocina hoy mismo.</p>
+        </aside>
+
+        <!-- Panel derecho con formularios -->
+        <section class="panel">
+
+            <!-- ➕ mensaje de error compartido -->
+            <p class="error" id="msg-error"></p>
+
+            <!-- LOGIN ➕ id="form-login" -->
+            <form class="form form-login" id="form-login" action="#" method="post">
+                <h2>Iniciar sesión</h2>
+
+                <div class="field">
+                    <label class="sr-only" for="login-email">Correo electrónico</label>
+                    <input type="email" id="login-email" placeholder="Correo electrónico" required />
+                    <span class="icon"><svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z" /></svg></span>
+                </div>
+
+                <div class="field">
+                    <label class="sr-only" for="login-pass">Contraseña</label>
+                    <input type="password" id="login-pass" placeholder="Contraseña" required />
+                    <span class="icon"><svg viewBox="0 0 24 24"><path d="M18 8h-1V6c0-2.8-2.2-5-5-5S7 3.2 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.7 1.4-3.1 3.1-3.1s3.1 1.4 3.1 3.1v2z" /></svg></span>
+                </div>
+
+                <a class="forgot" href="#">¿Olvidaste tu contraseña?</a>
+
+                <button type="submit" class="btn">Entrar a mi cocina</button>
+
+                <p class="swap">¿No tienes cuenta? <label for="tab-register">Regístrate</label></p>
+            </form>
+
+            <!-- REGISTRO ➕ id="form-register" -->
+            <form class="form form-register" id="form-register" action="#" method="post">
+                <h2>Crear cuenta</h2>
+
+                <div class="field">
+                    <label class="sr-only" for="reg-nombre">Nombre completo</label>
+                    <input type="text" id="reg-nombre" placeholder="Nombre completo" required />
+                    <span class="icon"><svg viewBox="0 0 24 24"><path d="M12 12c2.7 0 5-2.3 5-5s-2.3-5-5-5-5 2.3-5 5 2.3 5 5 5zm0 2c-3.3 0-10 1.7-10 5v3h20v-3c0-3.3-6.7-5-10-5z" /></svg></span>
+                </div>
+
+                <div class="field">
+                    <label class="sr-only" for="reg-email">Correo electrónico</label>
+                    <input type="email" id="reg-email" placeholder="Correo electrónico" required />
+                    <span class="icon"><svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z" /></svg></span>
+                </div>
+
+                <div class="field">
+                    <label class="sr-only" for="reg-pass">Contraseña</label>
+                    <input type="password" id="reg-pass" placeholder="Contraseña" minlength="8" required />
+                    <span class="icon"><svg viewBox="0 0 24 24"><path d="M18 8h-1V6c0-2.8-2.2-5-5-5S7 3.2 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.7 1.4-3.1 3.1-3.1s3.1 1.4 3.1 3.1v2z" /></svg></span>
+                </div>
+
+                <button type="submit" class="btn">Crear cuenta</button>
+
+                <p class="swap">¿Ya tienes cuenta? <label for="tab-login">Inicia sesión</label></p>
+            </form>
+
+        </section>
+    </main>
+
+    <!-- ➕ SCRIPTS -->
+    <script src="../JS/api.js"></script>
+    <script src="../JS/login.js"></script>
+</body>
+</html>

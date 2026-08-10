@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Daily Food · Mis comidas</title>
+  <link rel="stylesheet" href="../CSS/menu.css" />
+  <link rel="stylesheet" href="../CSS/comida.css" />
+</head>
+<body>
+
+  <header class="topbar">
+    <a class="logo" href="menu.html">Daily Food</a>
+    <nav>
+      <a href="menu.html">Calendario</a>
+      <a href="comida.html" class="active">Comidas</a>
+      <a href="perfil.html">Perfil</a>
+    </nav>
+  </header>
+
+  <main class="wrap">
+
+    <!-- Formulario: solo el nombre es obligatorio -->
+    <section class="cal-card">
+      <h2 class="titulo">Añadir comida 🍽️</h2>
+      <form id="form-comida">
+        <label class="campo">Nombre *
+          <input type="text" id="f-nombre" maxlength="40" placeholder="Ej.: Milanesa" required />
+        </label>
+        <label class="campo">Ingredientes (opcional, separados por comas)
+          <input type="text" id="f-ingredientes" placeholder="arroz, pollo, milanesa" />
+        </label>
+        <label class="campo">Receta (opcional)
+          <textarea id="f-receta" rows="3" placeholder="Pasos breves…"></textarea>
+        </label>
+        <div class="acciones">
+          <button type="submit" class="btn">Guardar plato</button>
+        </div>
+      </form>
+    </section>
+
+    <!-- Lista de todas tus comidas -->
+    <section class="cal-card">
+      <h2 class="titulo">Mis comidas (<span id="contador">0</span>)</h2>
+      <div id="lista" class="lista"></div>
+    </section>
+
+  </main>
+
+  <script src="../JS/api.js"></script>
+  <script src="../JS/comida.js"></script>
+</body>
+</html>

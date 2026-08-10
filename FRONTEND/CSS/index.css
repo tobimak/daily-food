@@ -1,0 +1,216 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&display=swap');
+
+/* ===== PALETA PASTEL DREAMLAND ===== */
+:root{
+  --lila:       #B5A8DB;
+  --rosa-claro: #F8C8DD;
+  --rosa:       #F592B8;
+  --azul-claro: #A8D3F5;
+  --azul:       #93C4F1;
+  /* Derivados profundos para legibilidad */
+  --tinta:      #4B3F63;
+  --rosa-texto: #D65C96;
+  --lila-texto: #6C5BB1;
+  --azul-texto: #4A8FD4;
+  --card:       #FFFFFF;
+  --linea:      rgba(75,63,99,.12);
+}
+
+*{ margin:0; padding:0; box-sizing:border-box; }
+
+body{
+  font-family:'Outfit', system-ui, sans-serif;
+  min-height:100vh;
+  display:flex; align-items:center; justify-content:center;
+  padding:24px;
+  background:
+    radial-gradient(circle at 15% 0%, rgba(248,200,221,.55), transparent 50%),
+    radial-gradient(circle at 85% 10%, rgba(147,196,241,.45), transparent 50%),
+    #FBF8FD;
+  color:var(--tinta);
+}
+
+/* ===== TARJETA CON BORDE SUAVE ===== */
+.auth{
+  width:min(880px, 100%);
+  min-height:540px;
+  position:relative;
+  background:var(--card);
+  border:1px solid rgba(181,168,219,.4);
+  border-radius:16px;
+  box-shadow:0 20px 60px rgba(181,168,219,.3), 0 0 40px rgba(248,200,221,.35);
+  overflow:hidden;
+}
+
+    .auth > input[type="radio"]{
+      position:absolute;
+      opacity:0;
+      pointer-events:none;
+    }
+
+/* ===== PANEL IZQUIERDO (DIAGONAL) ===== */
+.brand{
+  position:absolute;
+  inset:0;
+  clip-path:polygon(0 0, 55% 0, 22% 100%, 0 100%);
+  /* Tonos profundos de la misma paleta para que el texto blanco se lea */
+  background:linear-gradient(135deg, var(--rosa-texto), var(--lila-texto) 55%, var(--azul-texto));
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  gap:16px;
+  padding:56px 0 48px 44px;
+}
+
+.logo{
+  position:absolute;
+  top:26px; left:40px;
+  font-weight:800; letter-spacing:1px; font-size:1.05rem;
+  color:#fff;
+}
+
+.brand h1{
+  font-size:2.1rem; font-weight:800;
+  text-transform:uppercase; letter-spacing:1.5px; line-height:1.1;
+  color:#fff;
+  text-shadow:0 2px 14px rgba(75,63,99,.25);
+}
+
+.brand p{
+  max-width:32ch;
+  font-size:.9rem; line-height:1.5;
+  color:rgba(255,255,255,.9);
+}
+
+/* Textos que cambian según la pestaña */
+#tab-login:checked ~ .brand .t-register,
+#tab-register:checked ~ .brand .t-login{ display:none; }
+
+/* ===== PANEL DERECHO ===== */
+.panel{
+  position:relative;
+  margin-left:57%; width:43%;
+  min-height:540px;
+  padding:52px 46px 40px 10px;
+  display:flex; flex-direction:column; justify-content:center;
+}
+
+.form{ display:none; flex-direction:column; gap:22px; animation:aparecer .4s ease; }
+
+@keyframes aparecer{ from{ opacity:0; transform:translateY(10px); } }
+
+#tab-login:checked ~ .panel .form-login,
+#tab-register:checked ~ .panel .form-register{ display:flex; }
+
+.form h2{
+  text-align:center;
+  font-size:1.45rem; font-weight:800; letter-spacing:.5px;
+  color:var(--tinta);
+  margin-bottom:8px;
+}
+
+/* ===== INPUTS MINIMALISTAS (solo línea inferior) ===== */
+.field{ position:relative; }
+
+    .field input{
+      width:100%;
+      background:transparent;
+      border:none;
+      border-bottom:1px solid rgba(75,63,99,.3);
+      padding:10px 30px 10px 2px;
+      font:inherit; font-size:.92rem;
+      color:var(--tinta);
+      caret-color:var(--rosa-texto);
+      transition:border-color .25s;
+    }
+
+        .field input::placeholder{ color:rgba(75,63,99,.45); }
+
+        .field input:focus{
+          outline:none;
+          border-bottom-color:var(--rosa-texto);
+        }
+
+.icon{
+  position:absolute; right:4px; top:50%;
+  transform:translateY(-50%);
+  color:rgba(75,63,99,.55);
+  pointer-events:none;
+  transition:color .25s;
+}
+
+    .icon svg{ width:16px; height:16px; fill:currentColor; display:block; }
+
+.field:focus-within .icon{ color:var(--rosa-texto); }
+
+.forgot{
+  align-self:flex-end;
+  margin-top:-8px;
+  font-size:.78rem;
+  color:rgba(75,63,99,.6);
+  text-decoration:none;
+}
+
+    .forgot:hover{
+      color:var(--rosa-texto);
+      text-decoration:underline;
+    }
+
+/* ===== BOTÓN PÍLDORA CON DEGRADADO ===== */
+.btn{
+  margin-top:6px;
+  padding:12px;
+  border:none; border-radius:999px;
+  background:linear-gradient(90deg, var(--rosa-texto), var(--lila-texto));
+  color:#fff;
+  font:inherit; font-weight:600; font-size:.95rem;
+  cursor:pointer;
+  box-shadow:0 4px 18px rgba(214,92,150,.35);
+  transition:filter .25s, transform .15s;
+}
+
+    .btn:hover{ filter:brightness(1.1); }
+
+    .btn:active{ transform:scale(.98); }
+
+/* ===== ENLACE PARA CAMBIAR DE FORMULARIO ===== */
+.swap{
+  text-align:center;
+  font-size:.82rem;
+  color:rgba(75,63,99,.6);
+}
+
+    .swap label{
+      color:var(--rosa-texto);
+      font-weight:600;
+      cursor:pointer;
+    }
+
+        .swap label:hover{ text-decoration:underline; }
+
+/* Accesibilidad: label oculto pero disponible para lectores de pantalla */
+.sr-only{
+  position:absolute;
+  width:1px; height:1px; margin:-1px;
+  overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width:760px){
+  .brand{
+    position:relative; inset:auto;
+    clip-path:none;
+    padding:28px 28px 22px;
+    gap:10px;
+  }
+
+  .logo{ position:static; margin-bottom:4px; }
+
+  .brand h1{ font-size:1.5rem; }
+
+  .panel{
+    margin:0; width:100%;
+    min-height:auto;
+    padding:36px 28px;
+  }
+}

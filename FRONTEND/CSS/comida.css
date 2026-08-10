@@ -1,0 +1,22 @@
+.titulo{ font-size:1.2rem; margin-bottom:16px; }
+
+.lista{ display:flex; flex-direction:column; gap:10px; }
+
+.item{
+  display:flex; align-items:center; gap:12px;
+  background:rgba(181,168,219,.1);
+  border:1px solid var(--linea);
+  border-radius:12px; padding:12px 14px;
+}
+.item .info{ flex:1; }
+.item .nombre{ font-weight:600; }
+.item .detalle{ font-size:.78rem; color:rgba(75,63,99,.6); margin-top:2px; }
+
+.btn-borrar{
+  background:transparent; border:1px solid rgba(224,86,74,.5); color:#E0564A;
+  border-radius:999px; padding:6px 12px; font:inherit; font-size:.75rem; cursor:pointer;
+  transition:.2s;
+}
+.btn-borrar:hover{ background:#E0564A; color:#fff;}
+
+.vacio{ text-align:center; color:rgba(75,63,99,.5); font-size:.85rem; padding:20px 0; }
