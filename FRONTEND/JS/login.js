@@ -25,3 +25,14 @@ document.getElementById("form-register").addEventListener("submit", async e => {
     location.href = "menu.html";   // ✅ antes decía calendario.html
   } catch (err) { msgError.textContent = err.message; }
 });
+
+// 👁️ Mostrar / ocultar contraseña
+document.querySelectorAll(".toggle-pass").forEach(btn => {
+  btn.addEventListener("click", () => {
+    const input = document.getElementById(btn.dataset.target);
+    if (!input) return;
+    const mostrar = input.type === "password";
+    input.type = mostrar ? "text" : "password";
+    btn.textContent = mostrar ? "👁‍🗨" : "👁️";
+  });
+});
