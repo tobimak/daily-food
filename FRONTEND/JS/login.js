@@ -1,6 +1,4 @@
-// login.js
-const msgError = document.getElementById("msg-error");
-
+// login.js — versión con toasts
 document.getElementById("form-login").addEventListener("submit", async e => {
   e.preventDefault();
   try {
@@ -9,8 +7,13 @@ document.getElementById("form-login").addEventListener("submit", async e => {
       contrasena: document.getElementById("login-pass").value
     });
     api.guardarSesion(auth);
-    location.href = "menu.html";   // ✅ antes decía calendario.html
-  } catch (err) { msgError.textContent = err.message; }
+    toast.exito(`¡Hola de nuevo, ${auth.nombre}! 👋`);
+    setTimeout(() => location.href = "menu.html", 700);
+  } catch (err) {
+    toast.error(err.message === "Failed to fetch"
+      ? "No se pudo conectar con el servidor. Revisa tu conexión."
+      : err.message);
+  }
 });
 
 document.getElementById("form-register").addEventListener("submit", async e => {
@@ -22,8 +25,11 @@ document.getElementById("form-register").addEventListener("submit", async e => {
       contrasena: document.getElementById("reg-pass").value
     });
     api.guardarSesion(auth);
-    location.href = "menu.html";   // ✅ antes decía calendario.html
-  } catch (err) { msgError.textContent = err.message; }
+    toast.exito("Cuenta creada correctamente 🎉");
+    setTimeout(() => location.href = "menu.html", 700);
+  } catch (err) {
+    toast.error(err.message);
+  }
 });
 
 // 👁️ Mostrar / ocultar contraseña
@@ -33,6 +39,6 @@ document.querySelectorAll(".toggle-pass").forEach(btn => {
     if (!input) return;
     const mostrar = input.type === "password";
     input.type = mostrar ? "text" : "password";
-    btn.textContent = mostrar ? "👁‍🗨" : "👁️";
+    btn.textContent = mostrar ? "🙈" : "👁️";
   });
 });
